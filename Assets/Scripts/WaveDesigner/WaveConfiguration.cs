@@ -18,6 +18,10 @@ public class WaveConfiguration : ScriptableObject
     [Min(1f)]
     public float duration = 60f;
 
+    [Tooltip("Multiplicador global de dificultad de la oleada.")]
+    [Range(0.1f, 5f)]
+    public float waveDifficulty = 1f;
+
     [Tooltip("Sonido que se reproducirá al comenzar la oleada.")]
     public AudioClip warningAudio;
 
