@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af509da278547d409d57a93fb4b4b96, type: 3}
+  m_Name: NewWaveConfiguration
+  m_EditorClassIdentifier: Assembly-CSharp::WaveConfiguration
+  waveName: New Wave
+  duration: 60
+  warningAudio: {fileID: 0}
+  enemyGroups:
+  - groupName: 
+    enemyPrefab: {fileID: 0}
+    spawnDelay: 0
+    enemyCount: 0
+    spawnInterval: 0
+    difficulty: 0
+  hasBoss: 0
+  bossPrefab: {fileID: 0}
+  bossSpawnTime: 45
