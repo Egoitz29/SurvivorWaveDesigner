@@ -3,18 +3,18 @@ using UnityEngine;
 
 [CreateAssetMenu(
     fileName = "NuevaConfiguracionOleada",
-    menuName = "Survivor Wave Designer/Configuración de Oleada"
+    menuName = "Survivor Wave Designer/Configuraciï¿½n de Oleada"
 )]
 public class WaveConfiguration : ScriptableObject
 {
     // -----------------------------
-    // CONFIGURACIÓN GENERAL
+    // CONFIGURACIï¿½N GENERAL
     // -----------------------------
 
     [Tooltip("Nombre identificativo de la oleada.")]
     public string waveName = "Nueva Oleada";
 
-    [Tooltip("Duración total de la oleada en segundos.")]
+    [Tooltip("Duraciï¿½n total de la oleada en segundos.")]
     [Min(1f)]
     public float duration = 60f;
 
@@ -26,7 +26,7 @@ public class WaveConfiguration : ScriptableObject
     public AnimationCurve difficultyCurve =
         AnimationCurve.Linear(0f, 1f, 1f, 1f);
 
-    [Tooltip("Sonido que se reproducirá al comenzar la oleada.")]
+    [Tooltip("Sonido que se reproducirï¿½ al comenzar la oleada.")]
     public AudioClip warningAudio;
 
     // -----------------------------
@@ -37,7 +37,7 @@ public class WaveConfiguration : ScriptableObject
     public List<EnemySpawnGroup> enemyGroups = new List<EnemySpawnGroup>();
 
     // -----------------------------
-    // CONFIGURACIÓN DEL BOSS
+    // CONFIGURACIï¿½N DEL BOSS
     // -----------------------------
 
     [Tooltip("Indica si esta oleada contiene un boss.")]
@@ -47,20 +47,20 @@ public class WaveConfiguration : ScriptableObject
     [Tooltip("Prefab del boss.")]
     public GameObject bossPrefab;
 
-    [Tooltip("Momento de aparición del boss en segundos.")]
+    [Tooltip("Momento de apariciï¿½n del boss en segundos.")]
     [Min(0f)]
     public float bossSpawnTime = 45f;
 
 #if UNITY_EDITOR
 
     // -----------------------------
-    // NOTAS DE DISEÑADOR
+    // NOTAS DE DISEï¿½ADOR
     // Solo existen dentro del Editor.
     // No se incluyen en la build final.
     // -----------------------------
 
     [TextArea(4, 10)]
-    [Tooltip("Notas internas para los diseñadores de la oleada.")]
+    [Tooltip("Notas internas para los diseï¿½adores de la oleada.")]
     public string designerNotes = "";
 
 #endif
