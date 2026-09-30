@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(
-    fileName = "NewWaveConfiguration",
-    menuName = "Survivor Wave Designer/Wave Configuration"
+    fileName = "NuevaConfiguracionOleada",
+    menuName = "Survivor Wave Designer/Configuración de Oleada"
 )]
 public class WaveConfiguration : ScriptableObject
 {
     // -----------------------------
-    // GENERAL CONFIGURATION
+    // CONFIGURACIÓN GENERAL
     // -----------------------------
 
     [Tooltip("Nombre identificativo de la oleada.")]
-    public string waveName = "New Wave";
+    public string waveName = "Nueva Oleada";
 
     [Tooltip("Duración total de la oleada en segundos.")]
     [Min(1f)]
@@ -22,20 +22,22 @@ public class WaveConfiguration : ScriptableObject
     [Range(0.1f, 5f)]
     public float waveDifficulty = 1f;
 
+    [Tooltip("Curva de dificultad general de la oleada a lo largo del tiempo.")]
+    public AnimationCurve difficultyCurve =
+        AnimationCurve.Linear(0f, 1f, 1f, 1f);
+
     [Tooltip("Sonido que se reproducirá al comenzar la oleada.")]
     public AudioClip warningAudio;
 
-
     // -----------------------------
-    // ENEMY GROUPS
+    // GRUPOS DE ENEMIGOS
     // -----------------------------
 
     [Tooltip("Grupos de enemigos que forman esta oleada.")]
     public List<EnemySpawnGroup> enemyGroups = new List<EnemySpawnGroup>();
 
-
     // -----------------------------
-    // BOSS CONFIGURATION
+    // CONFIGURACIÓN DEL BOSS
     // -----------------------------
 
     [Tooltip("Indica si esta oleada contiene un boss.")]
@@ -48,4 +50,18 @@ public class WaveConfiguration : ScriptableObject
     [Tooltip("Momento de aparición del boss en segundos.")]
     [Min(0f)]
     public float bossSpawnTime = 45f;
+
+#if UNITY_EDITOR
+
+    // -----------------------------
+    // NOTAS DE DISEÑADOR
+    // Solo existen dentro del Editor.
+    // No se incluyen en la build final.
+    // -----------------------------
+
+    [TextArea(4, 10)]
+    [Tooltip("Notas internas para los diseñadores de la oleada.")]
+    public string designerNotes = "";
+
+#endif
 }

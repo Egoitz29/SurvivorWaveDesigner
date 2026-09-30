@@ -13,15 +13,53 @@ MonoBehaviour:
   m_Name: NewWaveConfiguration
   m_EditorClassIdentifier: Assembly-CSharp::WaveConfiguration
   waveName: New Wave
-  duration: 60
+  duration: 313
+  waveDifficulty: 1
+  difficultyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   warningAudio: {fileID: 0}
   enemyGroups:
-  - groupName: 
-    enemyPrefab: {fileID: 0}
-    spawnDelay: 0
-    enemyCount: 0
-    spawnInterval: 0
-    difficulty: 0
-  hasBoss: 0
-  bossPrefab: {fileID: 0}
-  bossSpawnTime: 45
+  - groupName: tyuhtuj
+    enemyPrefab: {fileID: 4227623719041885096, guid: ac51bd7cc50e1b6479761109ffb86487, type: 3}
+    spawnDelay: 8.99
+    enemyCount: 328
+    spawnInterval: 0.92969424
+    difficulty: 1.29
+  - groupName: GZGDS
+    enemyPrefab: {fileID: 4227623719041885096, guid: ac51bd7cc50e1b6479761109ffb86487, type: 3}
+    spawnDelay: 8.84
+    enemyCount: 188
+    spawnInterval: 0.57
+    difficulty: 1.29
+  - groupName: DGDG
+    enemyPrefab: {fileID: 4227623719041885096, guid: ac51bd7cc50e1b6479761109ffb86487, type: 3}
+    spawnDelay: 6.27
+    enemyCount: 638
+    spawnInterval: 0.48152277
+    difficulty: 1.29
+  hasBoss: 1
+  bossPrefab: {fileID: 4227623719041885096, guid: ac51bd7cc50e1b6479761109ffb86487, type: 3}
+  bossSpawnTime: 10
+  designerNotes: et43y54yrthyrtyh
