@@ -7,14 +7,14 @@ public class EnemySpawnGroup
     public string groupName = "Enemy Group";
 
     [Required]
-    [Tooltip("Prefab del enemigo que aparecerá en este grupo.")]
+    [Tooltip("Prefab del enemigo que aparecera en este grupo.")]
     public GameObject enemyPrefab;
 
     [Tooltip("Tiempo en segundos antes de que aparezca el primer enemigo.")]
     [Min(0f)]
     public float spawnDelay = 0f;
 
-    [Tooltip("Número de enemigos que aparecerán.")]
+    [Tooltip("Numero de enemigos que apareceran.")]
     [Min(1)]
     public int enemyCount = 5;
 
@@ -26,9 +26,6 @@ public class EnemySpawnGroup
     [Range(0.1f, 5f)]
     public float difficulty = 1f;
 
-    /// <summary>
-    /// Momento en el que aparecerá el último enemigo del grupo.
-    /// </summary>
     public float LastSpawnTime
     {
         get

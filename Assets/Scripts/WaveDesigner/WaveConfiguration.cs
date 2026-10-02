@@ -7,14 +7,11 @@ using UnityEngine;
 )]
 public class WaveConfiguration : ScriptableObject
 {
-    // -----------------------------
-    // CONFIGURACI�N GENERAL
-    // -----------------------------
 
     [Tooltip("Nombre identificativo de la oleada.")]
     public string waveName = "Nueva Oleada";
 
-    [Tooltip("Duraci�n total de la oleada en segundos.")]
+    [Tooltip("Duracion total de la oleada en segundos.")]
     [Min(1f)]
     public float duration = 60f;
 
@@ -26,19 +23,13 @@ public class WaveConfiguration : ScriptableObject
     public AnimationCurve difficultyCurve =
         AnimationCurve.Linear(0f, 1f, 1f, 1f);
 
-    [Tooltip("Sonido que se reproducir� al comenzar la oleada.")]
+    [Tooltip("Sonido que se reproducira al comenzar la oleada.")]
     public AudioClip warningAudio;
 
-    // -----------------------------
-    // GRUPOS DE ENEMIGOS
-    // -----------------------------
 
     [Tooltip("Grupos de enemigos que forman esta oleada.")]
     public List<EnemySpawnGroup> enemyGroups = new List<EnemySpawnGroup>();
 
-    // -----------------------------
-    // CONFIGURACI�N DEL BOSS
-    // -----------------------------
 
     [Tooltip("Indica si esta oleada contiene un boss.")]
     public bool hasBoss = false;
@@ -47,20 +38,16 @@ public class WaveConfiguration : ScriptableObject
     [Tooltip("Prefab del boss.")]
     public GameObject bossPrefab;
 
-    [Tooltip("Momento de aparici�n del boss en segundos.")]
+    [Tooltip("Momento de aparicion del boss en segundos.")]
     [Min(0f)]
     public float bossSpawnTime = 45f;
 
 #if UNITY_EDITOR
 
-    // -----------------------------
-    // NOTAS DE DISE�ADOR
-    // Solo existen dentro del Editor.
-    // No se incluyen en la build final.
-    // -----------------------------
+
 
     [TextArea(4, 10)]
-    [Tooltip("Notas internas para los dise�adores de la oleada.")]
+    [Tooltip("Notas internas para los diseñadores de la oleada.")]
     public string designerNotes = "";
 
 #endif
