@@ -23,13 +23,11 @@ public class EnemyEditor : Editor
     {
         serializedObject.Update();
 
-        // Botón Show / Hide
         if (GUILayout.Button(show ? "Hide" : "Show"))
         {
             show = !show;
         }
 
-        // Solo mostramos los atributos si pulsamos Show
         if (show)
         {
             EditorGUILayout.Space();
@@ -49,7 +47,7 @@ public class EnemyEditor : Editor
 
             EditorGUILayout.Space();
 
-            // Cogemos el GameObject asignado como Target
+
             GameObject targetGameObject =
                 targetObject.objectReferenceValue as GameObject;
 

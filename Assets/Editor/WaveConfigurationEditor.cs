@@ -84,9 +84,6 @@ public class WaveConfigurationEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    // =========================================================
-    // CONFIGURACI�N GENERAL
-    // =========================================================
 
     private void DrawGeneralConfiguration()
     {
@@ -108,7 +105,7 @@ public class WaveConfigurationEditor : Editor
 
         EditorGUILayout.PropertyField(
             duration,
-            new GUIContent("Duraci�n")
+            new GUIContent("Duracion")
         );
 
         EditorGUILayout.PropertyField(
@@ -124,9 +121,6 @@ public class WaveConfigurationEditor : Editor
         EditorGUI.indentLevel--;
     }
 
-    // =========================================================
-    // GRUPOS DE ENEMIGOS
-    // =========================================================
 
     private void DrawEnemyGroups()
     {
@@ -166,7 +160,6 @@ public class WaveConfigurationEditor : Editor
 
             EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
-            // T�TULO DEL GRUPO
             EditorGUILayout.LabelField(
                 string.IsNullOrEmpty(groupName.stringValue)
                     ? "Grupo de Enemigos " + (i + 1)
@@ -176,7 +169,6 @@ public class WaveConfigurationEditor : Editor
 
             EditorGUILayout.Space(3);
 
-            // CAMPOS EDITABLES
             EditorGUILayout.PropertyField(
                 groupName,
                 new GUIContent("Nombre del grupo")
@@ -209,9 +201,6 @@ public class WaveConfigurationEditor : Editor
 
             EditorGUILayout.Space(5);
 
-            // ------------------------
-            // DATOS CALCULADOS
-            // ------------------------
 
             float lastSpawnTime =
                 spawnDelay.floatValue +
@@ -224,20 +213,17 @@ public class WaveConfigurationEditor : Editor
                 waveDifficulty.floatValue;
 
             EditorGUILayout.LabelField(
-                "Tiempo del �ltimo spawn",
+                "Tiempo del ultimo spawn",
                 lastSpawnTime.ToString("0.00") + " s"
             );
 
             EditorGUILayout.LabelField(
-                "Puntuaci�n de dificultad",
+                "Puntuacion de dificultad",
                 difficultyScore.ToString("0.00")
             );
 
             EditorGUILayout.Space(5);
 
-            // ------------------------
-            // BOTONES
-            // ------------------------
 
             EditorGUILayout.BeginHorizontal();
 
@@ -263,7 +249,7 @@ public class WaveConfigurationEditor : Editor
             EditorGUILayout.Space(5);
         }
 
-        if (GUILayout.Button("+ A�adir grupo de enemigos"))
+        if (GUILayout.Button("+ Añadir grupo de enemigos"))
         {
             AddEnemyGroup();
         }
@@ -306,10 +292,6 @@ public class WaveConfigurationEditor : Editor
         groupName.stringValue += " Copia";
     }
 
-    // =========================================================
-    // CONFIGURACI�N DEL BOSS
-    // =========================================================
-
     private void DrawBossConfiguration()
     {
         showBoss = EditorGUILayout.Foldout(
@@ -344,15 +326,11 @@ public class WaveConfigurationEditor : Editor
         EditorGUI.indentLevel--;
     }
 
-    // =========================================================
-    // HERRAMIENTAS R�PIDAS
-    // =========================================================
-
     private void DrawQuickTools()
     {
         showQuickTools = EditorGUILayout.Foldout(
             showQuickTools,
-            "Herramientas R�pidas",
+            "Herramientas Rápidas",
             true
         );
 
@@ -381,15 +359,12 @@ public class WaveConfigurationEditor : Editor
         EditorGUILayout.EndHorizontal();
     }
 
-    // =========================================================
-    // AN�LISIS
-    // =========================================================
 
     private void DrawWaveAnalysis()
     {
         showAnalysis = EditorGUILayout.Foldout(
             showAnalysis,
-            "An�lisis de la Oleada",
+            "Análisis de la Oleada",
             true
         );
 
@@ -421,10 +396,10 @@ public class WaveConfigurationEditor : Editor
             SerializedProperty difficulty =
                 group.FindPropertyRelative("difficulty");
 
-            // Total de enemigos
+
             totalEnemies += enemyCount.intValue;
 
-            // Tiempo del �ltimo spawn de este grupo
+
             float lastSpawnTime =
                 spawnDelay.floatValue +
                 Mathf.Max(0, enemyCount.intValue - 1) *
@@ -435,7 +410,6 @@ public class WaveConfigurationEditor : Editor
                 lastWaveSpawnTime = lastSpawnTime;
             }
 
-            // Dificultad total del grupo
             float groupDifficulty =
                 enemyCount.intValue *
                 difficulty.floatValue *
@@ -444,7 +418,6 @@ public class WaveConfigurationEditor : Editor
             totalDifficultyScore += groupDifficulty;
         }
 
-        // Si hay Boss, tambi�n tenemos en cuenta su aparici�n
         if (hasBoss.boolValue &&
             bossSpawnTime.floatValue > lastWaveSpawnTime)
         {
@@ -468,12 +441,12 @@ public class WaveConfigurationEditor : Editor
 
         EditorGUILayout.Space(3);
         EditorGUILayout.LabelField(
-            "Duraci�n total",
+            "Duracion total",
             duration.floatValue.ToString("0.00") + " s"
         );
 
         EditorGUILayout.LabelField(
-            "N�mero de grupos",
+            "Número de grupos",
             totalGroups.ToString()
         );
 
@@ -483,12 +456,12 @@ public class WaveConfigurationEditor : Editor
         );
 
         EditorGUILayout.LabelField(
-            "Puntuaci�n total de dificultad",
+            "Puntuación total de dificultad",
             totalDifficultyScore.ToString("0.00")
         );
 
         EditorGUILayout.LabelField(
-            "�ltimo evento de spawn",
+            "Último evento de spawn",
             lastWaveSpawnTime.ToString("0.00") + " s"
         );
 
@@ -519,7 +492,7 @@ public class WaveConfigurationEditor : Editor
         if (hasBoss.boolValue)
         {
             EditorGUILayout.LabelField(
-                "Aparici�n del Boss",
+                "Aparición del Boss",
                 bossSpawnTime.floatValue.ToString("0.00") + " s"
             );
         }
@@ -527,9 +500,6 @@ public class WaveConfigurationEditor : Editor
         EditorGUILayout.EndVertical();
     }
 
-    // =========================================================
-    // CURVA DE DIFICULTAD
-    // =========================================================
 
     private void DrawDifficultyCurve()
     {
@@ -580,7 +550,7 @@ public class WaveConfigurationEditor : Editor
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
         EditorGUILayout.LabelField(
-            "Previsualizaci�n de dificultad",
+            "Previsualización de dificultad",
             EditorStyles.boldLabel
         );
 
@@ -605,15 +575,12 @@ public class WaveConfigurationEditor : Editor
     }
 
 
-    // =========================================================
-    // NOTAS DE DISE�ADOR
-    // =========================================================
 
     private void DrawDesignerNotes()
     {
         showDesignerNotes = EditorGUILayout.Foldout(
             showDesignerNotes,
-            "Notas de Dise�ador",
+            "Notas de Diseñador",
             true
         );
 
@@ -633,15 +600,12 @@ public class WaveConfigurationEditor : Editor
         );
     }
 
-    // =========================================================
-    // VALIDACI�N
-    // =========================================================
 
     private void DrawWaveValidation()
     {
         showValidation = EditorGUILayout.Foldout(
             showValidation,
-            "Validaci�n de la Oleada",
+            "Validación de la Oleada",
             true
         );
 
@@ -653,23 +617,17 @@ public class WaveConfigurationEditor : Editor
         bool hasErrors = false;
         bool hasWarnings = false;
 
-        // =====================================================
-        // 1. OLEADA SIN GRUPOS
-        // =====================================================
-
         if (enemyGroups.arraySize == 0)
         {
             EditorGUILayout.HelpBox(
-                "La oleada no contiene ning�n grupo de enemigos.",
+                "La oleada no contiene ningún grupo de enemigos.",
                 MessageType.Warning
             );
 
             hasWarnings = true;
         }
 
-        // =====================================================
-        // 2. VALIDACI�N DE LOS GRUPOS
-        // =====================================================
+
 
         for (int i = 0; i < enemyGroups.arraySize; i++)
         {
@@ -696,9 +654,7 @@ public class WaveConfigurationEditor : Editor
                     ? "Grupo " + (i + 1)
                     : groupName.stringValue;
 
-            // -------------------------------------------------
-            // Grupo sin prefab
-            // -------------------------------------------------
+
 
             if (enemyPrefab.objectReferenceValue == null)
             {
@@ -711,9 +667,6 @@ public class WaveConfigurationEditor : Editor
                 hasErrors = true;
             }
 
-            // -------------------------------------------------
-            // �ltimo spawn fuera de la oleada
-            // -------------------------------------------------
 
             float lastSpawnTime =
                 spawnDelay.floatValue +
@@ -753,24 +706,20 @@ public class WaveConfigurationEditor : Editor
             }
         }
 
-        // =====================================================
-        // 3. VALIDACI�N DEL BOSS
-        // =====================================================
 
         if (hasBoss.boolValue)
         {
-            // Boss activado pero sin prefab
+
             if (bossPrefab.objectReferenceValue == null)
             {
                 EditorGUILayout.HelpBox(
-                    "El Boss est� activado, pero no tiene un prefab asignado.",
+                    "El Boss está activado, pero no tiene un prefab asignado.",
                     MessageType.Error
                 );
 
                 hasErrors = true;
             }
 
-            // Boss aparece despu�s de terminar la oleada
             if (bossSpawnTime.floatValue > duration.floatValue)
             {
                 EditorGUILayout.HelpBox(
@@ -803,27 +752,21 @@ public class WaveConfigurationEditor : Editor
             }
         }
 
-        // =====================================================
-        // 4. RESULTADO FINAL
-        // =====================================================
 
         if (!hasErrors && !hasWarnings)
         {
             EditorGUILayout.HelpBox(
-                "La configuraci�n de la oleada es v�lida.",
+                "La configuración de la oleada es válida.",
                 MessageType.Info
             );
         }
     }
-    // =========================================================
-    // L�NEA TEMPORAL
-    // =========================================================
 
     private void DrawWaveTimeline()
     {
         showTimeline = EditorGUILayout.Foldout(
             showTimeline,
-            "L�nea Temporal de la Oleada",
+            "Línea Temporal de la Oleada",
             true
         );
 
@@ -835,7 +778,7 @@ public class WaveConfigurationEditor : Editor
         if (duration.floatValue <= 0f)
         {
             EditorGUILayout.HelpBox(
-                "La duraci�n de la oleada debe ser mayor que 0 para mostrar la l�nea temporal.",
+                "La duración de la oleada debe ser mayor que 0 para mostrar la línea temporal.",
                 MessageType.Warning
             );
 
@@ -861,7 +804,7 @@ public class WaveConfigurationEditor : Editor
                 timelineHeight
             );
 
-        // Fondo general
+
         EditorGUI.DrawRect(
             timelineRect,
             new Color(0.15f, 0.15f, 0.15f)
@@ -875,7 +818,6 @@ public class WaveConfigurationEditor : Editor
         float currentY =
             timelineRect.y + headerHeight;
 
-        // Dibujar grupos
         for (int i = 0; i < enemyGroups.arraySize; i++)
         {
             SerializedProperty group =
@@ -892,7 +834,6 @@ public class WaveConfigurationEditor : Editor
             currentY += rowHeight;
         }
 
-        // Dibujar Boss
         if (hasBoss.boolValue)
         {
             DrawBossTimeline(
@@ -910,9 +851,6 @@ public class WaveConfigurationEditor : Editor
         );
     }
 
-    // =========================================================
-    // PRESET: HORDA
-    // =========================================================
 
     private void CreateHordePreset()
     {
@@ -924,7 +862,7 @@ public class WaveConfigurationEditor : Editor
         enemyGroups.ClearArray();
 
         AddPresetGroup(
-            "Horda - R�pida",
+            "Horda - Rápida",
             0f,
             12,
             0.5f,
@@ -955,9 +893,6 @@ public class WaveConfigurationEditor : Editor
         Debug.Log("Preset de Horda creado.");
     }
 
-    // =========================================================
-    // CREAR GRUPO DE PRESET
-    // =========================================================
 
     private void AddPresetGroup(
         string groupNameValue,
@@ -991,10 +926,6 @@ public class WaveConfigurationEditor : Editor
         group.FindPropertyRelative("difficulty").floatValue =
             difficultyValue;
     }
-
-    // =========================================================
-    // PRESET: OLEADA CON BOSS
-    // =========================================================
 
     private void CreateBossWavePreset()
     {
@@ -1033,15 +964,12 @@ public class WaveConfigurationEditor : Editor
         Debug.Log("Preset de Oleada con Boss creado.");
     }
 
-    // =========================================================
-    // LIMPIAR OLEADA
-    // =========================================================
 
     private void ClearWave()
     {
         bool confirm = EditorUtility.DisplayDialog(
             "Limpiar Oleada",
-            "�Seguro que quieres borrar todos los grupos de enemigos y la configuraci�n del Boss?",
+            "¿Seguro que quieres borrar todos los grupos de enemigos y la configuración del Boss?",
             "Limpiar",
             "Cancelar"
         );
@@ -1062,7 +990,7 @@ public class WaveConfigurationEditor : Editor
 
         EditorUtility.SetDirty(serializedObject.targetObject);
 
-        Debug.Log("Configuraci�n de la oleada eliminada.");
+        Debug.Log("Configuración de la oleada eliminada.");
     }
 
     private void FixGroupSpawnInterval(SerializedProperty group)
@@ -1076,7 +1004,7 @@ public class WaveConfigurationEditor : Editor
         SerializedProperty spawnInterval =
             group.FindPropertyRelative("spawnInterval");
 
-        // Si solo hay un enemigo, no hace falta intervalo.
+
         if (enemyCount.intValue <= 1)
         {
             spawnDelay.floatValue =
@@ -1092,8 +1020,6 @@ public class WaveConfigurationEditor : Editor
             duration.floatValue -
             spawnDelay.floatValue;
 
-        // Si el delay ya est� fuera de la duraci�n,
-        // lo colocamos dentro de la oleada.
         if (availableTime <= 0f)
         {
             spawnDelay.floatValue = 0f;
@@ -1130,7 +1056,7 @@ public class WaveConfigurationEditor : Editor
             new Color(0.10f, 0.10f, 0.10f)
         );
 
-        // T�TULO DEL TIMELINE
+
         Rect titleRect = new Rect(
             timelineRect.x + 6f,
             timelineRect.y + 3f,
@@ -1158,7 +1084,7 @@ public class WaveConfigurationEditor : Editor
                 timelineRect.x +
                 timelineRect.width * normalized;
 
-            // L�nea vertical
+
             Rect lineRect = new Rect(
                 x,
                 timelineRect.y + 42f,
@@ -1171,13 +1097,11 @@ public class WaveConfigurationEditor : Editor
                 new Color(0.3f, 0.3f, 0.3f)
             );
 
-            // TEXTO DEL TIEMPO
             float labelWidth = 45f;
 
             float labelX = x - labelWidth / 2f;
 
-            // Evitamos que 0s y el �ltimo valor
-            // se salgan del timeline.
+
             labelX = Mathf.Clamp(
                 labelX,
                 timelineRect.x + 2f,
@@ -1257,7 +1181,7 @@ public class WaveConfigurationEditor : Editor
                 endX - startX
             );
 
-        // Dejamos espacio arriba y abajo
+
         Rect groupBar = new Rect(
             startX,
             y + 6f,
@@ -1304,8 +1228,7 @@ public class WaveConfigurationEditor : Editor
                 ? "Grupo " + (index + 1)
                 : groupName.stringValue;
 
-        // Margen interno para que el texto
-        // no empiece pegado al borde.
+
         Rect labelRect = new Rect(
             groupBar.x + 5f,
             groupBar.y,
@@ -1345,7 +1268,7 @@ public class WaveConfigurationEditor : Editor
             normalizedTime *
             timelineRect.width;
 
-        // Marcador vertical del Boss
+
         Rect bossMarker = new Rect(
             x - 2f,
             y + 5f,
@@ -1362,7 +1285,7 @@ public class WaveConfigurationEditor : Editor
             )
         );
 
-        // Texto separado del marcador
+
         Rect bossLabel = new Rect(
             x + 9f,
             y + 5f,
